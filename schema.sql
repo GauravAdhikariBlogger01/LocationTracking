@@ -48,12 +48,12 @@ CREATE TABLE `LocationTracking`.`driver` (
   `latitude` VARCHAR(45) NOT NULL,
   `longitude` VARCHAR(45) NOT NULL,
   `speed` INT NOT NULL,
-  `drivercol` VARCHAR(45) NULL,
+  `device_id` INT(11) ,
   `additionalInfo` VARCHAR(45) NULL,
   `eventtime` DATETIME NOT NULL,
   PRIMARY KEY (`driver_id`, `mobileno`),
   CONSTRAINT `fk_driver_1`
-    FOREIGN KEY (`driver_id`)
+    FOREIGN KEY (`device_id`)
     REFERENCES `LocationTracking`.`tracking_device` (`device_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
