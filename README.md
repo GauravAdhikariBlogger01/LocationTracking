@@ -7,19 +7,19 @@
 
 ##Build Instruction
 
-1-Navigate to project directory through command prompt
-2-mvn clean install
-3-mvn spring-boot : run
+-Navigate to project directory through command prompt
+-mvn clean install
+-mvn spring-boot : run
 
 
-##Access
+##Accessing web service
 
 
-1-http://localhost:8084 , Home page(jsp)
+-http://localhost:8084 , Home page(jsp)
 
 
 post request
-2-http://localhost:8084/add
+-http://localhost:8084/add
 
 {
  "deviceId":"1",
@@ -30,10 +30,29 @@ post request
 }
 
 get request
-3-http://localhost:8084/getCall/{pass deviceid}
+-http://localhost:8084/getCall/{pass deviceid}
 
 get request
-4-http://localhost:8084/getCall/{starttime}/{enddate}
+-http://localhost:8084/getCall/{starttime}/{enddate}
+
+
+## WebService Access for Scenario 2
+
+Post
+
+-http://localhost:8084/addDriverDevice/
+
+Data set
+
+{ 
+ "deviceId":"2",
+  "latitude":"1",
+  "longitude":"2",
+  "speed":"20",
+  "mobileNumber":"123456",
+  "driver_id":"1",
+  "additionalInfo":"test"
+}
 
 
 
