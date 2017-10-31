@@ -2,6 +2,23 @@
 -  Mysql 5.7
 -  java 1.8
 -  eclipse IDE
+-  maven
+
+
+##Build Instruction
+
+1-Navigate to project directory through command prompt
+2-mvn clean install
+3-mvn spring-boot : run
+
+
+##Access
+
+
+1-http://localhost:8084 , Home page(jsp)
+
+2-http://localhost:8084/add
+
 
 ## Useful Snippets and References
 
@@ -30,14 +47,5 @@ Body
   "additionalInfo":"test"
 }
 
-Second 
+#######################################################################################
 
-created a web service(get) to find and get the particular asset location and detail on the basis of asset id;
-
-Created  get web service(get)  to find and get the particular asset location and detail on the basis time duration;
-
-
-
-## Exercises
-
-## Files List
