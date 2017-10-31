@@ -1,7 +1,5 @@
 package com.turvo.locationtracking.modal;
 
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class TrackingDetailModel {

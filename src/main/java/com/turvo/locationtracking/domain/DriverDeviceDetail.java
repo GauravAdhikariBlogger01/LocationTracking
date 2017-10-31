@@ -2,28 +2,22 @@ package com.turvo.locationtracking.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.*;
+import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "driver")
-@IdClass(Driverid.class)
-public class Driver implements Serializable {
+public class DriverDeviceDetail implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	private Driver driver_id;
-
-	//@Column(name = "mobileno")
-	@Id
-	private long mobileno;
+	@EmbeddedId
+	private Driverid driver_id;
 
 	@Column(name = "latitude")
 	private long latitude;
@@ -33,6 +27,9 @@ public class Driver implements Serializable {
 
 	@Column(name = "speed")
 	private long speed;
+
+	@Column(name = "device_id")
+	private long deviceid;
 
 	@Column(name = "additionalinfo")
 	private String additionalInfo;
@@ -81,20 +78,20 @@ public class Driver implements Serializable {
 		this.additionalInfo = additionalInfo;
 	}
 
-	public Driver getDriver() {
+	public Driverid getDriver() {
 		return driver_id;
 	}
 
-	public void setDriver(Driver driverid) {
+	public void setDriver(Driverid driverid) {
 		this.driver_id = driverid;
 	}
 
-	public long getMobileno() {
-		return mobileno;
+	public long getDeviceid() {
+		return deviceid;
 	}
 
-	public void setMobileno(long mobileno) {
-		this.mobileno = mobileno;
+	public void setDeviceid(long deviceid) {
+		this.deviceid = deviceid;
 	}
 
 }

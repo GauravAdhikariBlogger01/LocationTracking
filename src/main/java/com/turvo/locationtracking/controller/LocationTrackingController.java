@@ -2,7 +2,6 @@ package com.turvo.locationtracking.controller;
 
 import java.util.Date;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -85,6 +84,6 @@ public class LocationTrackingController {
 	public void saveAssetDetails(@RequestBody TrackingDetailModel trackingDetailModel) {
 
 		deviceDetailService.addDetails(trackingDetailModel);
-	}
 
+	}
 }

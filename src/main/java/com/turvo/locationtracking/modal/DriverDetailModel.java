@@ -5,6 +5,7 @@ import java.util.Date;
 public class DriverDetailModel {
 
 	private long deviceId;
+
 	private long mobileNumber;
 
 	private long latitude;
@@ -16,6 +17,16 @@ public class DriverDetailModel {
 	private String additionalInfo;
 
 	private Date timeststamp;
+	
+	private long driver_id;
+
+	public long getDriver_id() {
+		return driver_id;
+	}
+
+	public void setDriver_id(long driver_id) {
+		this.driver_id = driver_id;
+	}
 
 	public long getDeviceId() {
 		return deviceId;

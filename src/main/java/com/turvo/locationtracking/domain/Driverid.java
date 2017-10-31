@@ -14,11 +14,9 @@ public class Driverid implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public Driverid() {
-	}
-
+	@Column(name = "driver_id")
 	private Long driver_id;
-
+	@Column(name = "mobileno")
 	private Long mobileno;
 
 	public Long getDriver_id() {
@@ -40,6 +38,10 @@ public class Driverid implements Serializable {
 	public Driverid(Long driver_id, Long mobileno) {
 		this.driver_id = driver_id;
 		this.mobileno = mobileno;
+	}
+
+	Driverid() {
+
 	}
 
 	@Override
