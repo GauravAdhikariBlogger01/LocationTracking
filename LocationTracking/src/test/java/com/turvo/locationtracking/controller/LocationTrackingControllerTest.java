@@ -1,11 +1,13 @@
-/*package com.turvo.locationtracking.controller;
+package com.turvo.locationtracking.controller;
 
 import static org.mockito.Mockito.atLeast;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -14,35 +16,35 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.ui.ModelMap;
 
-import com.turvo.locationtracking.domain.TrackingDetail;
-import com.turvo.locationtracking.domain.User;
-import com.turvo.locationtracking.repository.UserRepository;
+import com.turvo.locationtracking.modal.TrackingDetailModel;
 import com.turvo.locationtracking.service.DeviceDetailService;
-import com.turvo.locationtracking.service.UserService;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LocationTrackingControllerTest {
 
 	@Mock
 	LocationTrackingController locationTrackingController;
-	
+
 	@Mock
 	DeviceDetailService deviceDetailService;
-	
-	private List<TrackingDetail> trackingDetails;
-	
-	private TrackingDetail trackingDetail;
-	
+
+	private List<TrackingDetailModel> recordByDeviceId;
+
+	private TrackingDetailModel trackingDetail;
+
+	// private Date starttime = "2012-02-01 00:00:00";
+	// private Date endtime = "2017-10-31 06:54:58";
+
 	@Before
 	public void setUpBeforeClass() throws Exception {
-		trackingDetails = new ArrayList<>();
-		TrackingDetail trackingD = new TrackingDetail();
-		trackingD.setAdditionalInfo("Test Details");
-		trackingD.setLatitude(1l);
-		trackingD.setLongitude(2l);
-		trackingD.setSpeed(5l);
-	//	trackingD.add(trackingDetail);
-	//	locationTrackingController = new LocationTrackingController();
+		recordByDeviceId = new ArrayList<>();
+		TrackingDetailModel trackingDetail = new TrackingDetailModel();
+		trackingDetail.setAdditionalInfo("Test Details");
+		trackingDetail.setLatitude(1l);
+		trackingDetail.setLongitude(2l);
+		trackingDetail.setSpeed(5l);
+		recordByDeviceId.add(trackingDetail);
+		// locationTrackingController = new LocationTrackingController();
 		MockitoAnnotations.initMocks(this);
 	}
 
@@ -56,20 +58,25 @@ public class LocationTrackingControllerTest {
 	}
 
 	@Test
-	public void testListAllUsers() {
-		
-		Mockito.when(deviceDetailService.getRecordbyDeviceId(1l)).thenReturn(trackingDetail);
-		users = userService.retrieveAllUsers();
-		Mockito.verify(userService, atLeast(1)).retrieveAllUsers();
-		
+	public void testGetDetailByDevice() {
+
+		Mockito.when(deviceDetailService.getRecordbyDeviceId(1l)).thenReturn(recordByDeviceId);
+		recordByDeviceId = deviceDetailService.getRecordbyDeviceId(1l);
+		Mockito.verify(deviceDetailService, atLeast(1)).getRecordbyDeviceId(1l);
+
 	}
 
+	@Ignore
 	@Test
 	public void testSaveAssetDetails() {
-		Mockito.when(deviceDetailService.addDetails(trackingDetail)).thenReturn(trackingDetail);
-		deviceDetailService.addDetails(trackingDetail);
-		Mockito.verify(deviceDetailService, atLeast(1)).addUser(trackingDetail);
+		/*
+		 * Mockito.when(deviceDetailService.getRecordbytime(starttime,
+		 * endtime)).thenReturn(trackingDetail);
+		 * deviceDetailService.getRecordbytime(starttime, endtime);
+		 * Mockito.verify(deviceDetailService, atLeast(1)).getRecordbytime(starttime,
+		 * endtime);
+		 */
 	}
 
 }
-*/
+
