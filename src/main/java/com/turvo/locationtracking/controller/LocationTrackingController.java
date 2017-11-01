@@ -87,7 +87,7 @@ public class LocationTrackingController {
 	 * @throws ParseException
 	 */
 	@GetMapping(value = "/getCall/{starttime}/{endtime}/{deviceId}")
-	public ResponseEntity<List<TrackingDetailModel>> getDetailByTime(
+	public ResponseEntity<List<TrackingDetailModel>> getDetailByTimeAndDevice(
 			@PathVariable("starttime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String starttime,
 			@PathVariable("endtime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String endtime,
 			@PathVariable("deviceId") Long deviceId) throws ParseException {
@@ -99,6 +99,30 @@ public class LocationTrackingController {
 		}
 		return new ResponseEntity<List<TrackingDetailModel>>(recordbytime, HttpStatus.OK);
 	}
+	/**
+	 * 
+	 * @param starttime
+	 * @param endtime
+	 * @param deviceId
+	 * @return
+	 * @throws ParseException
+	 */
+	
+	@GetMapping(value = "/getCall/{starttime}/{endtime}/{deviceId}/{driverId}")
+	public ResponseEntity<List<TrackingDetailModel>> getDetailByTimeAndDeviceAndDriver(
+			@PathVariable("starttime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String starttime,
+			@PathVariable("endtime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String endtime,
+			@PathVariable("deviceId") Long deviceId,
+			@PathVariable("deviceId") Long driverId) throws ParseException {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		List<TrackingDetailModel> recordbytime = deviceDetailService.getTrackingDetailByTimeSpanAndDeviceIdAndDriverId(
+				dateFormat.parse(starttime), dateFormat.parse(endtime), deviceId,driverId);
+		if (recordbytime.isEmpty()) {
+			return new ResponseEntity<List<TrackingDetailModel>>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<TrackingDetailModel>>(recordbytime, HttpStatus.OK);
+	}
+	
 
 	/**
 	 * Save the details publish by asset.
@@ -111,6 +135,7 @@ public class LocationTrackingController {
 	public void saveAssetTrackingDetails(@RequestBody TrackingDetailModel trackingDetailModel) {
 
 		deviceDetailService.addTrackingDetails(trackingDetailModel);
+		
 
 	}
 }

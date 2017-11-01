@@ -50,12 +50,19 @@ Data set
 {
  
  "deviceId":"2",
-  "latitude":"10",
-  "longitude":"8",
+  "latitude":"09",
+  "longitude":"80",
   "speed":"20",
   "mobileNumber":"123489",
   "driverId":"2",
   "additionalInfo":"test"
 }
+
+##WebService for get call
+
+-/getCall/{starttime}/{endtime}
+-/getCall/{deviceid}
+-/getCall/{starttime}/{endtime}/{deviceId}
+-/getCall/{starttime}/{endtime}/{deviceId}/{driverId}
 
 

@@ -58,7 +58,7 @@ public class DeviceDetailServiceImpl implements DeviceDetailService {
 			detailModel.setTimeststamp(trackingDetail.getTimestamp());
 			detailModel.setAdditionalInfo(trackingDetail.getAdditionalInfo());
 			detailModel.setDeviceId(trackingDetail.getDeviceId());
-			detailModel.setDeviceId(trackingDetail.getDriverId());
+			detailModel.setDriverId(trackingDetail.getDriverId());
 			trackingDetailModel.add(detailModel);
 		}
 		return trackingDetailModel;
@@ -84,5 +84,17 @@ public class DeviceDetailServiceImpl implements DeviceDetailService {
 		}
 		return trackingDetailModel;
 
+	}
+
+	@Override
+	public List<TrackingDetailModel> getTrackingDetailByTimeSpanAndDeviceIdAndDriverId(Date starttime, Date endtime,
+			Long deviceId, Long driverId) {
+		List<TrackingDetailModel> trackingDetailModel = new ArrayList<>();
+		List<TrackingDetail> trackingDetails = deviceDetailsRepository.findByTimeAndDeviceIdAndDriverId(starttime,
+				endtime, deviceId, driverId);
+		if (!trackingDetails.isEmpty()) {
+			trackingDetailModel = createTrackingDetailModel(trackingDetailModel, trackingDetails);
+		}
+		return trackingDetailModel;
 	}
 }
