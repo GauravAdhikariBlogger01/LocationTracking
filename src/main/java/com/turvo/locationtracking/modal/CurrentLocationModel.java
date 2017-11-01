@@ -2,7 +2,7 @@ package com.turvo.locationtracking.modal;
 
 import java.util.Date;
 
-public class DriverDetailModel {
+public class CurrentLocationModel {
 
 	private long deviceId;
 

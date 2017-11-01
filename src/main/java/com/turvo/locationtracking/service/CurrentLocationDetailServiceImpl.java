@@ -5,24 +5,24 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.turvo.locationtracking.domain.AssetCurrentLocation;
+import com.turvo.locationtracking.domain.CurrentAssetLocation;
 import com.turvo.locationtracking.domain.Driverid;
 import com.turvo.locationtracking.domain.TrackingDetail;
-import com.turvo.locationtracking.modal.DriverDetailModel;
+import com.turvo.locationtracking.modal.CurrentLocationModel;
 import com.turvo.locationtracking.repository.DeviceDetailsRepository;
 import com.turvo.locationtracking.repository.DriverDetailRepository;
 
 @Service
-public class DriverDetailServiceImpl  implements DriverDetailService {
+public class CurrentLocationDetailServiceImpl  implements CurrentLocationDetailService {
 
 	
 	@Autowired
 	DriverDetailRepository driverDetailRepository;
 	
 	@Override
-	public void addDetails(DriverDetailModel driverDetailModel) {
+	public void addDetails(CurrentLocationModel driverDetailModel) {
 		// TODO Auto-generated method stub
-		AssetCurrentLocation trackingDetail = new AssetCurrentLocation();
+		CurrentAssetLocation trackingDetail = new CurrentAssetLocation();
 		Driverid driverid =new Driverid(driverDetailModel.getDriverId(), driverDetailModel.getMobileNumber());
 		trackingDetail.setAdditionalInfo(driverDetailModel.getAdditionalInfo());
 		trackingDetail.setDriver(driverid);

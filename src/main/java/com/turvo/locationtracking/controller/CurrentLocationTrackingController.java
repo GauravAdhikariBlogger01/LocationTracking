@@ -6,18 +6,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import com.turvo.locationtracking.modal.DriverDetailModel;
-import com.turvo.locationtracking.service.DriverDetailService;
+import com.turvo.locationtracking.modal.CurrentLocationModel;
+import com.turvo.locationtracking.service.CurrentLocationDetailService;
 
 @Controller
-public class DriverDeviceTrackingController {
+public class CurrentLocationTrackingController {
 
 	@Autowired
-	DriverDetailService driverDetailService;
+	CurrentLocationDetailService driverDetailService;
 
 	@PostMapping(value = "/addDriverDevice")
 	@ResponseStatus(HttpStatus.ACCEPTED)
-	public void saveAssetDetails(@RequestBody DriverDetailModel driverDetailModel) {
+	public void saveAssetDetails(@RequestBody CurrentLocationModel driverDetailModel) {
 
 		driverDetailService.addDetails(driverDetailModel);
 

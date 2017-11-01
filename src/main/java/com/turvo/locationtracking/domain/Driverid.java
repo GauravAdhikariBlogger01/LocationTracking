@@ -10,7 +10,7 @@ import javax.persistence.Embeddable;
 public class Driverid implements Serializable {
 
 	/**
-	 * 
+	 * composite key creation.
 	 */
 	private static final long serialVersionUID = 1L;
 

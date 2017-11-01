@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "current_location")
-public class AssetCurrentLocation implements Serializable {
+public class CurrentAssetLocation implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
