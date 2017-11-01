@@ -46,9 +46,9 @@ public class LocationTrackingController {
 	 * @return list of record.
 	 */
 	@GetMapping(value = "/getCall/{deviceid}")
-	public ResponseEntity<List<TrackingDetailModel>> getDetailByDevice(@PathVariable("deviceid") Long deviceid) {
+	public ResponseEntity<List<TrackingDetailModel>> getDetailByDevice(@PathVariable("deviceid") Long deviceId) {
 
-		List<TrackingDetailModel> recordbydeviceid = deviceDetailService.getRecordbyDeviceId(deviceid);
+		List<TrackingDetailModel> recordbydeviceid = deviceDetailService.getRecordbyDeviceId(deviceId);
 		if (recordbydeviceid.isEmpty()) {
 			return new ResponseEntity<List<TrackingDetailModel>>(HttpStatus.NO_CONTENT);
 
@@ -62,14 +62,38 @@ public class LocationTrackingController {
 	 * @param endtime
 	 *            of type date,
 	 * @return list of record.
-	 * @throws ParseException 
+	 * @throws ParseException
 	 */
 	@GetMapping(value = "/getCall/{starttime}/{endtime}")
 	public ResponseEntity<List<TrackingDetailModel>> getDetailByTime(
 			@PathVariable("starttime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String starttime,
-			@PathVariable("endtime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String endtime) throws ParseException {
+			@PathVariable("endtime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String endtime)
+			throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		List<TrackingDetailModel> recordbytime = deviceDetailService.getRecordbytime(dateFormat.parse(starttime),dateFormat.parse(endtime));
+		List<TrackingDetailModel> recordbytime = deviceDetailService.getRecordbytime(dateFormat.parse(starttime),
+				dateFormat.parse(endtime));
+		if (recordbytime.isEmpty()) {
+			return new ResponseEntity<List<TrackingDetailModel>>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<List<TrackingDetailModel>>(recordbytime, HttpStatus.OK);
+	}
+
+	/**
+	 * get detail of particular device or asset on basis of time duration.
+	 * 
+	 * @param endtime
+	 *            of type date,
+	 * @return list of record.
+	 * @throws ParseException
+	 */
+	@GetMapping(value = "/getCall/{starttime}/{endtime}/{deviceId}")
+	public ResponseEntity<List<TrackingDetailModel>> getDetailByTime(
+			@PathVariable("starttime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String starttime,
+			@PathVariable("endtime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String endtime,
+			@PathVariable("deviceId") Long deviceId) throws ParseException {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		List<TrackingDetailModel> recordbytime = deviceDetailService.getRecordDeviceAndTime(dateFormat.parse(starttime),
+				dateFormat.parse(endtime), deviceId);
 		if (recordbytime.isEmpty()) {
 			return new ResponseEntity<List<TrackingDetailModel>>(HttpStatus.NO_CONTENT);
 		}

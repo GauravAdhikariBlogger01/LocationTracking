@@ -36,4 +36,6 @@ public interface DeviceDetailService {
 
 	List<TrackingDetailModel> getRecordbytime(Date starttime, Date endtime);
 
+	List<TrackingDetailModel> getRecordDeviceAndTime(Date starttime, Date endtime, Long deviceId);
+
 }

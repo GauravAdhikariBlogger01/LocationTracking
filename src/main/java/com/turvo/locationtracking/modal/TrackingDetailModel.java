@@ -13,12 +13,11 @@ public class TrackingDetailModel {
 	private long speed;
 
 	private String additionalInfo;
-	
+
 	private Date timeststamp;
-	
+
 	private long driverId;
 
-	
 	public long getDriverId() {
 		return driverId;
 	}

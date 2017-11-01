@@ -12,17 +12,14 @@ import com.turvo.locationtracking.domain.TrackingDetail;
 @Repository
 public interface DeviceDetailsRepository extends JpaRepository<TrackingDetail, Long> {
 
-	
-	
-	//@Query("SELECT p FROM TrackingDetail p WHERE p.timestamp BETWEEN startDate AND endDate")
-	@Query("select b from TrackingDetail b " +
-	         "where b.timestamp between ?1 and ?2")
+	@Query("select b from TrackingDetail b " + "where b.timestamp between ?1 and ?2")
 	List<TrackingDetail> findByTime(@Param("starttime") java.util.Date starttime,
 			@Param("endtime") java.util.Date endtime);
 
-	
-	 
-	
+	@Query("select b from TrackingDetail b " + "where b.timestamp between ?1 and ?2 and b.deviceId=?3")
+	List<TrackingDetail> findByTimeAndDeviceId(@Param("starttime") java.util.Date starttime,
+			@Param("endtime") java.util.Date endtime, @Param("deviceId") Long deviceId);
+
 	@Query("SELECT p FROM TrackingDetail p WHERE p.deviceId = :deviceid")
 	List<TrackingDetail> findByDeviceId(@Param(value = "deviceid") Long deviceid);
 }

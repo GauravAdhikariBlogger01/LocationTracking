@@ -4,6 +4,5 @@ import com.turvo.locationtracking.modal.CurrentLocationModel;
 
 public interface CurrentLocationDetailService {
 
-	
-	void addDetails(CurrentLocationModel driverDetailModel );
+	void addDetails(CurrentLocationModel driverDetailModel);
 }

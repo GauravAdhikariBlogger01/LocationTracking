@@ -41,14 +41,16 @@ public class DeviceDetailServiceImpl implements DeviceDetailService {
 		List<TrackingDetailModel> trackingDetailModel = new ArrayList<>();
 		List<TrackingDetail> trackingDetail = deviceDetailsRepository.findByDeviceId(deviceid);
 		if (!trackingDetail.isEmpty()) {
-			for (TrackingDetail trackingDetail2 : trackingDetail) {
+			for (TrackingDetail trackingDetailbyId : trackingDetail) {
 				TrackingDetailModel detailModel = new TrackingDetailModel();
-				detailModel.setAdditionalInfo(trackingDetail2.getAdditionalInfo());
-				detailModel.setLatitude(trackingDetail2.getLatitude());
-				detailModel.setLongitude(trackingDetail2.getLongitude());
-				detailModel.setSpeed(trackingDetail2.getSpeed());
-				detailModel.setTimeststamp(trackingDetail2.getTimestamp());
-				detailModel.setAdditionalInfo(trackingDetail2.getAdditionalInfo());
+				detailModel.setAdditionalInfo(trackingDetailbyId.getAdditionalInfo());
+				detailModel.setLatitude(trackingDetailbyId.getLatitude());
+				detailModel.setLongitude(trackingDetailbyId.getLongitude());
+				detailModel.setSpeed(trackingDetailbyId.getSpeed());
+				detailModel.setTimeststamp(trackingDetailbyId.getTimestamp());
+				detailModel.setAdditionalInfo(trackingDetailbyId.getAdditionalInfo());
+				detailModel.setDeviceId(trackingDetailbyId.getDeviceId());
+				detailModel.setDeviceId(trackingDetailbyId.getDriverId());
 				trackingDetailModel.add(detailModel);
 			}
 		}
@@ -67,10 +69,34 @@ public class DeviceDetailServiceImpl implements DeviceDetailService {
 				detailModel.setSpeed(trackobj.getSpeed());
 				detailModel.setTimeststamp(trackobj.getTimestamp());
 				detailModel.setAdditionalInfo(trackobj.getAdditionalInfo());
+				detailModel.setDeviceId(trackobj.getDeviceId());
+				detailModel.setDriverId(trackobj.getDriverId());
 				trackingDetailModel.add(detailModel);
 			}
 		}
 		return trackingDetailModel;
 	}
 
+	@Override
+	public List<TrackingDetailModel> getRecordDeviceAndTime(Date starttime, Date endtime, Long deviceId) {
+		List<TrackingDetailModel> trackingDetailModel = new ArrayList<>();
+		List<TrackingDetail> trackingDetail = deviceDetailsRepository.findByTimeAndDeviceId(starttime, endtime,
+				deviceId);
+		if (!trackingDetail.isEmpty()) {
+			for (TrackingDetail trackobj : trackingDetail) {
+				TrackingDetailModel detailModel = new TrackingDetailModel();
+				detailModel.setAdditionalInfo(trackobj.getAdditionalInfo());
+				detailModel.setLatitude(trackobj.getLatitude());
+				detailModel.setLongitude(trackobj.getLongitude());
+				detailModel.setSpeed(trackobj.getSpeed());
+				detailModel.setTimeststamp(trackobj.getTimestamp());
+				detailModel.setAdditionalInfo(trackobj.getAdditionalInfo());
+				detailModel.setDeviceId(trackobj.getDeviceId());
+				detailModel.setDriverId(trackobj.getDriverId());
+				trackingDetailModel.add(detailModel);
+			}
+		}
+		return trackingDetailModel;
+
+	}
 }
