@@ -7,7 +7,7 @@ import com.turvo.locationtracking.domain.CurrentAssetLocation;
 import com.turvo.locationtracking.domain.Driverid;
 
 @Repository
-public interface CurrentAssetLocationDetailRepository extends JpaRepository<CurrentAssetLocation,Driverid>{
+public interface CurrentLocationDetailRepository extends JpaRepository<CurrentAssetLocation,Driverid>{
 
 }
 

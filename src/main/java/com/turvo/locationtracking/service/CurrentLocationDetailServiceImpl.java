@@ -10,14 +10,14 @@ import com.turvo.locationtracking.domain.Driverid;
 import com.turvo.locationtracking.domain.TrackingDetail;
 import com.turvo.locationtracking.modal.CurrentLocationModel;
 import com.turvo.locationtracking.repository.DeviceDetailsRepository;
-import com.turvo.locationtracking.repository.CurrentAssetLocationDetailRepository;
+import com.turvo.locationtracking.repository.CurrentLocationDetailRepository;
 
 @Service
 public class CurrentLocationDetailServiceImpl  implements CurrentLocationDetailService {
 
 	
 	@Autowired
-	CurrentAssetLocationDetailRepository driverDetailRepository;
+	CurrentLocationDetailRepository driverDetailRepository;
 	
 	@Override
 	public void addDetails(CurrentLocationModel driverDetailModel) {

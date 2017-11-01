@@ -21,7 +21,7 @@ public class DeviceDetailServiceImpl implements DeviceDetailService {
 	DeviceDetailsRepository deviceDetailsRepository;
 
 	@Override
-	public void addDetails(TrackingDetailModel trackingDetailModel) {
+	public void addTrackingDetails(TrackingDetailModel trackingDetailModel) {
 		// TODO Auto-generated method stub
 		TrackingDetail trackingDetail = new TrackingDetail();
 		trackingDetail.setAdditionalInfo(trackingDetailModel.getAdditionalInfo());
@@ -36,54 +36,54 @@ public class DeviceDetailServiceImpl implements DeviceDetailService {
 	}
 
 	@Override
-	public List<TrackingDetailModel> getRecordbyDeviceId(Long deviceid) {
+	public List<TrackingDetailModel> getTrackingDetailsByDeviceId(Long deviceid) {
 		// TODO Auto-generated method stub
 		List<TrackingDetailModel> trackingDetailModel = new ArrayList<>();
-		List<TrackingDetail> trackingDetail = deviceDetailsRepository.findByDeviceId(deviceid);
-		if (!trackingDetail.isEmpty()) {
-			for (TrackingDetail trackingDetailbyId : trackingDetail) {
+		List<TrackingDetail> trackingDetails = deviceDetailsRepository.findByDeviceId(deviceid);
+		if (!trackingDetails.isEmpty()) {
+			for (TrackingDetail trackingDetail : trackingDetails) {
 				TrackingDetailModel detailModel = new TrackingDetailModel();
-				detailModel.setAdditionalInfo(trackingDetailbyId.getAdditionalInfo());
-				detailModel.setLatitude(trackingDetailbyId.getLatitude());
-				detailModel.setLongitude(trackingDetailbyId.getLongitude());
-				detailModel.setSpeed(trackingDetailbyId.getSpeed());
-				detailModel.setTimeststamp(trackingDetailbyId.getTimestamp());
-				detailModel.setAdditionalInfo(trackingDetailbyId.getAdditionalInfo());
-				detailModel.setDeviceId(trackingDetailbyId.getDeviceId());
-				detailModel.setDeviceId(trackingDetailbyId.getDriverId());
+				detailModel.setAdditionalInfo(trackingDetail.getAdditionalInfo());
+				detailModel.setLatitude(trackingDetail.getLatitude());
+				detailModel.setLongitude(trackingDetail.getLongitude());
+				detailModel.setSpeed(trackingDetail.getSpeed());
+				detailModel.setTimeststamp(trackingDetail.getTimestamp());
+				detailModel.setAdditionalInfo(trackingDetail.getAdditionalInfo());
+				detailModel.setDeviceId(trackingDetail.getDeviceId());
+				detailModel.setDeviceId(trackingDetail.getDriverId());
 				trackingDetailModel.add(detailModel);
 			}
 		}
 		return trackingDetailModel;
 	}
 
-	public List<TrackingDetailModel> getRecordbytime(Date starttime, Date endtime) {
-		List<TrackingDetailModel> trackingDetailModel = new ArrayList<>();
-		List<TrackingDetail> trackingDetail = deviceDetailsRepository.findByTime(starttime, endtime);
-		if (!trackingDetail.isEmpty()) {
-			for (TrackingDetail trackobj : trackingDetail) {
+	public List<TrackingDetailModel> getTrackingDetailByTimeSpan(Date starttime, Date endtime) {
+		List<TrackingDetailModel> trackingDetailModels = new ArrayList<>();
+		List<TrackingDetail> trackingDetails = deviceDetailsRepository.findByTime(starttime, endtime);
+		if (!trackingDetails.isEmpty()) {
+			for (TrackingDetail trackingDetail : trackingDetails) {
 				TrackingDetailModel detailModel = new TrackingDetailModel();
-				detailModel.setAdditionalInfo(trackobj.getAdditionalInfo());
-				detailModel.setLatitude(trackobj.getLatitude());
-				detailModel.setLongitude(trackobj.getLongitude());
-				detailModel.setSpeed(trackobj.getSpeed());
-				detailModel.setTimeststamp(trackobj.getTimestamp());
-				detailModel.setAdditionalInfo(trackobj.getAdditionalInfo());
-				detailModel.setDeviceId(trackobj.getDeviceId());
-				detailModel.setDriverId(trackobj.getDriverId());
-				trackingDetailModel.add(detailModel);
+				detailModel.setAdditionalInfo(trackingDetail.getAdditionalInfo());
+				detailModel.setLatitude(trackingDetail.getLatitude());
+				detailModel.setLongitude(trackingDetail.getLongitude());
+				detailModel.setSpeed(trackingDetail.getSpeed());
+				detailModel.setTimeststamp(trackingDetail.getTimestamp());
+				detailModel.setAdditionalInfo(trackingDetail.getAdditionalInfo());
+				detailModel.setDeviceId(trackingDetail.getDeviceId());
+				detailModel.setDriverId(trackingDetail.getDriverId());
+				trackingDetailModels.add(detailModel);
 			}
 		}
-		return trackingDetailModel;
+		return trackingDetailModels;
 	}
 
 	@Override
-	public List<TrackingDetailModel> getRecordDeviceAndTime(Date starttime, Date endtime, Long deviceId) {
+	public List<TrackingDetailModel> getTrackingDetailByTimeSpanAndDeviceId(Date starttime, Date endtime, Long deviceId) {
 		List<TrackingDetailModel> trackingDetailModel = new ArrayList<>();
-		List<TrackingDetail> trackingDetail = deviceDetailsRepository.findByTimeAndDeviceId(starttime, endtime,
+		List<TrackingDetail> trackingDetails = deviceDetailsRepository.findByTimeAndDeviceId(starttime, endtime,
 				deviceId);
-		if (!trackingDetail.isEmpty()) {
-			for (TrackingDetail trackobj : trackingDetail) {
+		if (!trackingDetails.isEmpty()) {
+			for (TrackingDetail trackobj : trackingDetails) {
 				TrackingDetailModel detailModel = new TrackingDetailModel();
 				detailModel.setAdditionalInfo(trackobj.getAdditionalInfo());
 				detailModel.setLatitude(trackobj.getLatitude());

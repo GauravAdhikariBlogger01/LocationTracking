@@ -13,7 +13,7 @@ public interface DeviceDetailService {
 	 * @param trackingDetailModel
 	 *            {@link TrackingDetailModel}.
 	 */
-	void addDetails(TrackingDetailModel trackingDetailModel);
+	void addTrackingDetails(TrackingDetailModel trackingDetailModel);
 
 	/**
 	 * get all record by device id or asset id.
@@ -22,7 +22,7 @@ public interface DeviceDetailService {
 	 *            {@link Long}.
 	 * @return [{@link TrackingDetailModel}.
 	 */
-	List<TrackingDetailModel> getRecordbyDeviceId(Long deviceid);
+	List<TrackingDetailModel> getTrackingDetailsByDeviceId(Long deviceid);
 
 	/**
 	 * get all location of devices recorded between start time and end time.
@@ -34,8 +34,8 @@ public interface DeviceDetailService {
 	 * @return [{@link TrackingDetailModel}.
 	 */
 
-	List<TrackingDetailModel> getRecordbytime(Date starttime, Date endtime);
+	List<TrackingDetailModel> getTrackingDetailByTimeSpan(Date starttime, Date endtime);
 
-	List<TrackingDetailModel> getRecordDeviceAndTime(Date starttime, Date endtime, Long deviceId);
+	List<TrackingDetailModel> getTrackingDetailByTimeSpanAndDeviceId(Date starttime, Date endtime, Long deviceId);
 
 }

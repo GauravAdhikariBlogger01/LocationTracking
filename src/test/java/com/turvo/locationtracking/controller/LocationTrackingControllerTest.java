@@ -60,9 +60,9 @@ public class LocationTrackingControllerTest {
 	@Test
 	public void testGetDetailByDevice() {
 
-		Mockito.when(deviceDetailService.getRecordbyDeviceId(1l)).thenReturn(recordByDeviceId);
-		recordByDeviceId = deviceDetailService.getRecordbyDeviceId(1l);
-		Mockito.verify(deviceDetailService, atLeast(1)).getRecordbyDeviceId(1l);
+		Mockito.when(deviceDetailService.getTrackingDetailsByDeviceId(1l)).thenReturn(recordByDeviceId);
+		recordByDeviceId = deviceDetailService.getTrackingDetailsByDeviceId(1l);
+		Mockito.verify(deviceDetailService, atLeast(1)).getTrackingDetailsByDeviceId(1l);
 
 	}
 

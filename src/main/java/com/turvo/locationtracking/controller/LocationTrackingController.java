@@ -48,7 +48,7 @@ public class LocationTrackingController {
 	@GetMapping(value = "/getCall/{deviceid}")
 	public ResponseEntity<List<TrackingDetailModel>> getDetailByDevice(@PathVariable("deviceid") Long deviceId) {
 
-		List<TrackingDetailModel> recordbydeviceid = deviceDetailService.getRecordbyDeviceId(deviceId);
+		List<TrackingDetailModel> recordbydeviceid = deviceDetailService.getTrackingDetailsByDeviceId(deviceId);
 		if (recordbydeviceid.isEmpty()) {
 			return new ResponseEntity<List<TrackingDetailModel>>(HttpStatus.NO_CONTENT);
 
@@ -70,8 +70,8 @@ public class LocationTrackingController {
 			@PathVariable("endtime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String endtime)
 			throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		List<TrackingDetailModel> recordbytime = deviceDetailService.getRecordbytime(dateFormat.parse(starttime),
-				dateFormat.parse(endtime));
+		List<TrackingDetailModel> recordbytime = deviceDetailService
+				.getTrackingDetailByTimeSpan(dateFormat.parse(starttime), dateFormat.parse(endtime));
 		if (recordbytime.isEmpty()) {
 			return new ResponseEntity<List<TrackingDetailModel>>(HttpStatus.NO_CONTENT);
 		}
@@ -92,8 +92,8 @@ public class LocationTrackingController {
 			@PathVariable("endtime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String endtime,
 			@PathVariable("deviceId") Long deviceId) throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		List<TrackingDetailModel> recordbytime = deviceDetailService.getRecordDeviceAndTime(dateFormat.parse(starttime),
-				dateFormat.parse(endtime), deviceId);
+		List<TrackingDetailModel> recordbytime = deviceDetailService.getTrackingDetailByTimeSpanAndDeviceId(
+				dateFormat.parse(starttime), dateFormat.parse(endtime), deviceId);
 		if (recordbytime.isEmpty()) {
 			return new ResponseEntity<List<TrackingDetailModel>>(HttpStatus.NO_CONTENT);
 		}
@@ -108,9 +108,9 @@ public class LocationTrackingController {
 	 */
 	@PostMapping(value = "/add")
 	@ResponseStatus(HttpStatus.ACCEPTED)
-	public void saveAssetDetails(@RequestBody TrackingDetailModel trackingDetailModel) {
+	public void saveAssetTrackingDetails(@RequestBody TrackingDetailModel trackingDetailModel) {
 
-		deviceDetailService.addDetails(trackingDetailModel);
+		deviceDetailService.addTrackingDetails(trackingDetailModel);
 
 	}
 }
