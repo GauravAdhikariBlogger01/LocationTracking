@@ -15,8 +15,18 @@ public class TrackingDetailModel {
 	private String additionalInfo;
 	
 	private Date timeststamp;
+	
+	private long driverId;
 
 	
+	public long getDriverId() {
+		return driverId;
+	}
+
+	public void setDriverId(long driverId) {
+		this.driverId = driverId;
+	}
+
 	public Date getTimeststamp() {
 		return timeststamp;
 	}

@@ -39,6 +39,17 @@ public class TrackingDetail implements Serializable {
 	@Column(name = "speed")
 	private long speed;
 
+	@Column(name = "driver_id")
+	private long driverId;
+
+	public long getDriverId() {
+		return driverId;
+	}
+
+	public void setDriverId(long driverId) {
+		this.driverId = driverId;
+	}
+
 	@Column(name = "additionalinfo")
 	private String additionalInfo;
 

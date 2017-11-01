@@ -2,23 +2,24 @@ package com.turvo.locationtracking.domain;
 
 import java.io.Serializable;
 import java.util.Date;
-
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
+import javax.persistence.*;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name = "driver")
-public class DriverDeviceDetail implements Serializable {
+@Table(name = "current_location")
+public class AssetCurrentLocation implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
 	private Driverid driver_id;
-
+	
 	@Column(name = "latitude")
 	private long latitude;
 
@@ -30,6 +31,14 @@ public class DriverDeviceDetail implements Serializable {
 
 	@Column(name = "device_id")
 	private long deviceid;
+	
+	public long getDeviceid() {
+		return deviceid;
+	}
+
+	public void setDeviceid(long deviceid) {
+		this.deviceid = deviceid;
+	}
 
 	@Column(name = "additionalinfo")
 	private String additionalInfo;
@@ -86,12 +95,5 @@ public class DriverDeviceDetail implements Serializable {
 		this.driver_id = driverid;
 	}
 
-	public long getDeviceid() {
-		return deviceid;
-	}
-
-	public void setDeviceid(long deviceid) {
-		this.deviceid = deviceid;
-	}
 
 }

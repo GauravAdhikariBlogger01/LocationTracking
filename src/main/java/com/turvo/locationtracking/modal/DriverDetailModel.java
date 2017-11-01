@@ -17,15 +17,15 @@ public class DriverDetailModel {
 	private String additionalInfo;
 
 	private Date timeststamp;
-	
-	private long driver_id;
 
-	public long getDriver_id() {
-		return driver_id;
+	private long driverId;
+
+	public long getDriverId() {
+		return driverId;
 	}
 
-	public void setDriver_id(long driver_id) {
-		this.driver_id = driver_id;
+	public void setDriverId(long driverId) {
+		this.driverId = driverId;
 	}
 
 	public long getDeviceId() {

@@ -22,10 +22,13 @@ post request
 -http://localhost:8084/add
 
 {
- "deviceId":"1",
-  "latitude":"1",
-  "longitude":"2",
+ 
+ "deviceId":"2",
+  "latitude":"10",
+  "longitude":"8",
   "speed":"20",
+  "mobileNumber":"123489",
+  "driverId":"2",
   "additionalInfo":"test"
 }
 
@@ -36,7 +39,7 @@ get request
 -http://localhost:8084/getCall/{starttime}/{enddate}
 
 
-## WebService Access for Scenario 2
+## WebService Access for Scenario Current Location 
 
 Post
 
@@ -44,15 +47,15 @@ Post
 
 Data set
 
-{ 
+{
+ 
  "deviceId":"2",
-  "latitude":"1",
-  "longitude":"2",
+  "latitude":"10",
+  "longitude":"8",
   "speed":"20",
-  "mobileNumber":"123456",
-  "driver_id":"1",
+  "mobileNumber":"123489",
+  "driverId":"2",
   "additionalInfo":"test"
 }
-
 
 

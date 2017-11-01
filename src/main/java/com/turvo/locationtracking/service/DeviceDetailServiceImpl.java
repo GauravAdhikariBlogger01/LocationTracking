@@ -29,6 +29,7 @@ public class DeviceDetailServiceImpl implements DeviceDetailService {
 		trackingDetail.setLatitude(trackingDetailModel.getLatitude());
 		trackingDetail.setLongitude(trackingDetailModel.getLongitude());
 		trackingDetail.setSpeed(trackingDetailModel.getSpeed());
+		trackingDetail.setDriverId(trackingDetailModel.getDriverId());
 		trackingDetail.setTimestamp(new Date());
 		deviceDetailsRepository.save(trackingDetail);
 
