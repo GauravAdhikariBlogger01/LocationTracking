@@ -41,13 +41,13 @@ public class DeviceDetailServiceImpl implements DeviceDetailService {
 		List<TrackingDetailModel> trackingDetailModel = new ArrayList<>();
 		List<TrackingDetail> trackingDetails = deviceDetailsRepository.findByDeviceId(deviceid);
 		if (!trackingDetails.isEmpty()) {
-			trackingDetailModel = createTrackingDetailModel(trackingDetailModel, trackingDetails);
+			trackingDetailModel = createTrackingDetailModel(trackingDetails);
 		}
 		return trackingDetailModel;
 	}
 
-	private List<TrackingDetailModel> createTrackingDetailModel(List<TrackingDetailModel> trackingDetailModel,
-			List<TrackingDetail> trackingDetails) {
+	private List<TrackingDetailModel> createTrackingDetailModel(List<TrackingDetail> trackingDetails) {
+		List<TrackingDetailModel> trackingDetailModel = new ArrayList<>();
 		for (TrackingDetail trackingDetail : trackingDetails) {
 
 			TrackingDetailModel detailModel = new TrackingDetailModel();
@@ -68,7 +68,7 @@ public class DeviceDetailServiceImpl implements DeviceDetailService {
 		List<TrackingDetailModel> trackingDetailModel = new ArrayList<>();
 		List<TrackingDetail> trackingDetails = deviceDetailsRepository.findByTime(starttime, endtime);
 		if (!trackingDetails.isEmpty()) {
-			trackingDetailModel = createTrackingDetailModel(trackingDetailModel, trackingDetails);
+			trackingDetailModel = createTrackingDetailModel(trackingDetails);
 		}
 		return trackingDetailModel;
 	}
@@ -80,7 +80,7 @@ public class DeviceDetailServiceImpl implements DeviceDetailService {
 		List<TrackingDetail> trackingDetails = deviceDetailsRepository.findByTimeAndDeviceId(starttime, endtime,
 				deviceId);
 		if (!trackingDetails.isEmpty()) {
-			trackingDetailModel = createTrackingDetailModel(trackingDetailModel, trackingDetails);
+			trackingDetailModel = createTrackingDetailModel(trackingDetails);
 		}
 		return trackingDetailModel;
 
@@ -93,7 +93,7 @@ public class DeviceDetailServiceImpl implements DeviceDetailService {
 		List<TrackingDetail> trackingDetails = deviceDetailsRepository.findByTimeAndDeviceIdAndDriverId(starttime,
 				endtime, deviceId, driverId);
 		if (!trackingDetails.isEmpty()) {
-			trackingDetailModel = createTrackingDetailModel(trackingDetailModel, trackingDetails);
+			trackingDetailModel = createTrackingDetailModel(trackingDetails);
 		}
 		return trackingDetailModel;
 	}

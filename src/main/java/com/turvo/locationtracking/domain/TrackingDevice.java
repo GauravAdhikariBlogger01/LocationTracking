@@ -29,7 +29,7 @@ public class TrackingDevice implements Serializable {
 
 	@Column(name = "description")
 	private String description;
-	
+
 	public long getDeviceId() {
 		return deviceId;
 	}

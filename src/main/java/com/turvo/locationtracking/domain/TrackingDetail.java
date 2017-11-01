@@ -19,42 +19,41 @@ public class TrackingDetail implements Serializable {
 	/**
 	 * Domain mapping class for tracking detail table.
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final Long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "tracking_id")
-	private long trackingId;
+	private Long trackingId;
 
 	@Column(name = "device_id")
-	private long deviceId;
+	private Long deviceId;
 
 	@Column(name = "latitude")
-	private long latitude;
+	private Long latitude;
 
-	@Column(name = "longitude")
-	private long longitude;
+	@Column(name = "Longitude")
+	private Long Longitude;
 
 	@Column(name = "speed")
-	private long speed;
+	private Long speed;
 
 	@Column(name = "driver_id")
-	private long driverId;
-
-	public long getDriverId() {
-		return driverId;
-	}
-
-	public void setDriverId(long driverId) {
-		this.driverId = driverId;
-	}
-
+	private Long driverId;
 	@Column(name = "additionalinfo")
 	private String additionalInfo;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "eventtime")
 	private Date timestamp;
+
+	public Long getDriverId() {
+		return driverId;
+	}
+
+	public void setDriverId(Long driverId) {
+		this.driverId = driverId;
+	}
 
 	public Date getTimestamp() {
 		return timestamp;
@@ -64,43 +63,43 @@ public class TrackingDetail implements Serializable {
 		this.timestamp = timestamp;
 	}
 
-	public long getTrackingId() {
+	public Long getTrackingId() {
 		return trackingId;
 	}
 
-	public void setTrackingId(long trackingId) {
+	public void setTrackingId(Long trackingId) {
 		this.trackingId = trackingId;
 	}
 
-	public long getDeviceId() {
+	public Long getDeviceId() {
 		return deviceId;
 	}
 
-	public void setDeviceId(long deviceId) {
+	public void setDeviceId(Long deviceId) {
 		this.deviceId = deviceId;
 	}
 
-	public long getLatitude() {
+	public Long getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(long latitude) {
+	public void setLatitude(Long latitude) {
 		this.latitude = latitude;
 	}
 
-	public long getLongitude() {
-		return longitude;
+	public Long getLongitude() {
+		return Longitude;
 	}
 
-	public void setLongitude(long longitude) {
-		this.longitude = longitude;
+	public void setLongitude(Long Longitude) {
+		this.Longitude = Longitude;
 	}
 
-	public long getSpeed() {
+	public Long getSpeed() {
 		return speed;
 	}
 
-	public void setSpeed(long speed) {
+	public void setSpeed(Long speed) {
 		this.speed = speed;
 	}
 

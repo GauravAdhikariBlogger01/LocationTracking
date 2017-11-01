@@ -19,11 +19,12 @@ public interface DeviceDetailsRepository extends JpaRepository<TrackingDetail, L
 	@Query("select b from TrackingDetail b " + "where b.timestamp between ?1 and ?2 and b.deviceId=?3")
 	List<TrackingDetail> findByTimeAndDeviceId(@Param("starttime") java.util.Date starttime,
 			@Param("endtime") java.util.Date endtime, @Param("deviceId") Long deviceId);
-	
-	@Query("select b from TrackingDetail b " + "where b.timestamp between ?1 and ?2 and b.deviceId=?3 and b.driverId=?4")
+
+	@Query("select b from TrackingDetail b "
+			+ "where b.timestamp between ?1 and ?2 and b.deviceId=?3 and b.driverId=?4")
 	List<TrackingDetail> findByTimeAndDeviceIdAndDriverId(@Param("starttime") java.util.Date starttime,
 			@Param("endtime") java.util.Date endtime, @Param("deviceId") Long deviceId,
-			@Param("driverId") Long  driverId);
+			@Param("driverId") Long driverId);
 
 	@Query("SELECT p FROM TrackingDetail p WHERE p.deviceId = :deviceid")
 	List<TrackingDetail> findByDeviceId(@Param(value = "deviceid") Long deviceid);

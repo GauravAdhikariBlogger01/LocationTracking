@@ -2,61 +2,67 @@ package com.turvo.locationtracking.modal;
 
 import java.util.Date;
 
+/**
+ * Current Location Model.
+ * 
+ * @author gaurava
+ *
+ */
 public class CurrentLocationModel {
 
-	private long deviceId;
+	private Long deviceId;
 
-	private long mobileNumber;
+	private Long mobileNumber;
 
-	private long latitude;
+	private Long latitude;
 
-	private long longitude;
+	private Long Longitude;
 
-	private long speed;
+	private Long speed;
 
 	private String additionalInfo;
 
 	private Date timeststamp;
 
-	private long driverId;
+	private Long driverId;
 
-	public long getDriverId() {
+	public Long getDriverId() {
 		return driverId;
 	}
 
-	public void setDriverId(long driverId) {
+	public void setDriverId(Long driverId) {
 		this.driverId = driverId;
 	}
 
-	public long getDeviceId() {
+	public Long getDeviceId() {
 		return deviceId;
 	}
 
-	public void setDeviceId(long deviceId) {
+	public void setDeviceId(Long deviceId) {
 		this.deviceId = deviceId;
 	}
 
-	public long getLatitude() {
+	public Long getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(long latitude) {
+	public void setLatitude(Long latitude) {
 		this.latitude = latitude;
 	}
 
-	public long getLongitude() {
-		return longitude;
+	public Long getLongitude() {
+		return Longitude;
 	}
 
-	public void setLongitude(long longitude) {
-		this.longitude = longitude;
+	public void setLongitude(Long Longitude) {
+		this.Longitude = Longitude;
 	}
 
-	public long getSpeed() {
+	public Long getSpeed() {
 		return speed;
 	}
 
-	public void setSpeed(long speed) {
+	public void setSpeed(Long speed) {
 		this.speed = speed;
 	}
 
@@ -76,11 +82,11 @@ public class CurrentLocationModel {
 		this.timeststamp = timeststamp;
 	}
 
-	public long getMobileNumber() {
+	public Long getMobileNumber() {
 		return mobileNumber;
 	}
 
-	public void setMobileNumber(long mobileNumber) {
+	public void setMobileNumber(Long mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
 
