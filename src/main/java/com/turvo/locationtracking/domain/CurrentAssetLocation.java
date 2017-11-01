@@ -11,6 +11,12 @@ import javax.persistence.Table;
 import javax.persistence.*;
 import javax.persistence.TemporalType;
 
+/**
+ * Entity Class for current location.
+ * 
+ * @author gaurava
+ *
+ */
 @Entity
 @Table(name = "current_location")
 public class CurrentAssetLocation implements Serializable {
@@ -19,7 +25,7 @@ public class CurrentAssetLocation implements Serializable {
 
 	@EmbeddedId
 	private Driverid driver_id;
-	
+
 	@Column(name = "latitude")
 	private long latitude;
 
@@ -31,7 +37,7 @@ public class CurrentAssetLocation implements Serializable {
 
 	@Column(name = "device_id")
 	private long deviceid;
-	
+
 	public long getDeviceid() {
 		return deviceid;
 	}
@@ -94,6 +100,5 @@ public class CurrentAssetLocation implements Serializable {
 	public void setDriver(Driverid driverid) {
 		this.driver_id = driverid;
 	}
-
 
 }

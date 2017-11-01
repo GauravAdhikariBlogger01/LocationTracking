@@ -3,7 +3,7 @@ package com.turvo.locationtracking.modal;
 import java.util.Date;
 
 /**
- * Traking Details Model.
+ * Tracking Details Model.
  * 
  * @author gaurava
  *

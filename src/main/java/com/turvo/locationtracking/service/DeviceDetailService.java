@@ -5,6 +5,12 @@ import java.util.List;
 
 import com.turvo.locationtracking.modal.TrackingDetailModel;
 
+/**
+ * Device detail interface.
+ * 
+ * @author gaurava
+ *
+ */
 public interface DeviceDetailService {
 
 	/**

@@ -12,6 +12,12 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/**
+ * Entity class for tracking detail table.
+ * 
+ * @author gaurava
+ *
+ */
 @Entity
 @Table(name = "tracking_detail")
 public class TrackingDetail implements Serializable {

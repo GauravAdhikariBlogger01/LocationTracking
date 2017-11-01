@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import com.turvo.locationtracking.modal.CurrentLocationModel;
 import com.turvo.locationtracking.service.CurrentLocationDetailService;
-
+/**
+ * Controller Class to save latest tracking data.
+ * @author gaurava
+ *
+ */
 @Controller
 public class CurrentLocationTrackingController {
 

@@ -6,8 +6,13 @@ import org.springframework.stereotype.Repository;
 import com.turvo.locationtracking.domain.CurrentAssetLocation;
 import com.turvo.locationtracking.domain.Driverid;
 
+/**
+ * Repository to store current location data.
+ * 
+ * @author gaurava
+ *
+ */
 @Repository
-public interface CurrentLocationDetailRepository extends JpaRepository<CurrentAssetLocation,Driverid>{
+public interface CurrentLocationDetailRepository extends JpaRepository<CurrentAssetLocation, Driverid> {
 
 }
-

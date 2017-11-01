@@ -6,6 +6,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+/**
+ * Global Exception handler.
+ * 
+ * @author gaurava
+ *
+ */
 @ControllerAdvice
 public class LocationTrackingControllerAdvice {
 	@ExceptionHandler(Exception.class)

@@ -12,18 +12,23 @@ import com.turvo.locationtracking.modal.CurrentLocationModel;
 import com.turvo.locationtracking.repository.DeviceDetailsRepository;
 import com.turvo.locationtracking.repository.CurrentLocationDetailRepository;
 
+/**
+ * Current location detail service implementation.
+ * 
+ * @author gaurava
+ *
+ */
 @Service
-public class CurrentLocationDetailServiceImpl  implements CurrentLocationDetailService {
+public class CurrentLocationDetailServiceImpl implements CurrentLocationDetailService {
 
-	
 	@Autowired
 	CurrentLocationDetailRepository driverDetailRepository;
-	
+
 	@Override
 	public void addDetails(CurrentLocationModel driverDetailModel) {
 		// TODO Auto-generated method stub
 		CurrentAssetLocation trackingDetail = new CurrentAssetLocation();
-		Driverid driverid =new Driverid(driverDetailModel.getDriverId(), driverDetailModel.getMobileNumber());
+		Driverid driverid = new Driverid(driverDetailModel.getDriverId(), driverDetailModel.getMobileNumber());
 		trackingDetail.setAdditionalInfo(driverDetailModel.getAdditionalInfo());
 		trackingDetail.setDriver(driverid);
 		trackingDetail.setDeviceid(driverDetailModel.getDeviceId());

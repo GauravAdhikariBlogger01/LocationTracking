@@ -6,6 +6,12 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+/**
+ * Embedded id or composite id.
+ * 
+ * @author gaurava
+ *
+ */
 
 public class Driverid implements Serializable {
 

@@ -9,6 +9,12 @@ import org.springframework.stereotype.Repository;
 
 import com.turvo.locationtracking.domain.TrackingDetail;
 
+/**
+ * Repository to store current location data.
+ * 
+ * @author gaurava
+ *
+ */
 @Repository
 public interface DeviceDetailsRepository extends JpaRepository<TrackingDetail, Long> {
 

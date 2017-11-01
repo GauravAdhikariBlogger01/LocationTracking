@@ -5,6 +5,12 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+/**
+ * Location tracking main class.
+ * 
+ * @author gaurava
+ *
+ */
 @SpringBootApplication
 @ComponentScan("com.turvo.locationtracking.*")
 @EnableAutoConfiguration

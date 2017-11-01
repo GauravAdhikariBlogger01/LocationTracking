@@ -12,6 +12,12 @@ import com.turvo.locationtracking.domain.TrackingDetail;
 import com.turvo.locationtracking.modal.TrackingDetailModel;
 import com.turvo.locationtracking.repository.DeviceDetailsRepository;
 
+/**
+ * Device detail service implementation.
+ * 
+ * @author gaurava
+ *
+ */
 @Service("deviceDetailService")
 public class DeviceDetailServiceImpl implements DeviceDetailService {
 	/**
@@ -20,6 +26,9 @@ public class DeviceDetailServiceImpl implements DeviceDetailService {
 	@Autowired
 	DeviceDetailsRepository deviceDetailsRepository;
 
+	/**
+	 * Add device tracking details.
+	 */
 	@Override
 	public void addTrackingDetails(TrackingDetailModel trackingDetailModel) {
 		// TODO Auto-generated method stub
@@ -35,6 +44,9 @@ public class DeviceDetailServiceImpl implements DeviceDetailService {
 
 	}
 
+	/**
+	 * get all tracking details by device id.
+	 */
 	@Override
 	public List<TrackingDetailModel> getTrackingDetailsByDeviceId(Long deviceid) {
 		// TODO Auto-generated method stub
@@ -46,6 +58,13 @@ public class DeviceDetailServiceImpl implements DeviceDetailService {
 		return trackingDetailModel;
 	}
 
+	/**
+	 * Common implementation for creating modal.
+	 * 
+	 * @param trackingDetails
+	 *            {@link}TrackingDetail}
+	 * @return
+	 */
 	private List<TrackingDetailModel> createTrackingDetailModel(List<TrackingDetail> trackingDetails) {
 		List<TrackingDetailModel> trackingDetailModel = new ArrayList<>();
 		for (TrackingDetail trackingDetail : trackingDetails) {
@@ -64,6 +83,10 @@ public class DeviceDetailServiceImpl implements DeviceDetailService {
 		return trackingDetailModel;
 	}
 
+	/**
+	 * get all tracking details for a period of time
+	 */
+	@Override
 	public List<TrackingDetailModel> getTrackingDetailByTimeSpan(Date starttime, Date endtime) {
 		List<TrackingDetailModel> trackingDetailModel = new ArrayList<>();
 		List<TrackingDetail> trackingDetails = deviceDetailsRepository.findByTime(starttime, endtime);
@@ -73,6 +96,9 @@ public class DeviceDetailServiceImpl implements DeviceDetailService {
 		return trackingDetailModel;
 	}
 
+	/**
+	 * get all tracking details by device id for a period of time..
+	 */
 	@Override
 	public List<TrackingDetailModel> getTrackingDetailByTimeSpanAndDeviceId(Date starttime, Date endtime,
 			Long deviceId) {
@@ -86,6 +112,9 @@ public class DeviceDetailServiceImpl implements DeviceDetailService {
 
 	}
 
+	/**
+	 * get all tracking details by device id,driver id for a duration of time.
+	 */
 	@Override
 	public List<TrackingDetailModel> getTrackingDetailByTimeSpanAndDeviceIdAndDriverId(Date starttime, Date endtime,
 			Long deviceId, Long driverId) {

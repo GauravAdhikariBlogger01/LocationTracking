@@ -57,11 +57,13 @@ public class LocationTrackingController {
 	}
 
 	/**
-	 * get detail of particular device or asset on basis of time duration.
+	 * get detail of particular device the basis of time duration
 	 * 
+	 * @param starttime
+	 *            of type date.
 	 * @param endtime
-	 *            of type date,
-	 * @return list of record.
+	 *            of type date.
+	 * @return TrackingDetailModel.
 	 * @throws ParseException
 	 */
 	@GetMapping(value = "/getCall/{starttime}/{endtime}")
@@ -79,11 +81,15 @@ public class LocationTrackingController {
 	}
 
 	/**
-	 * get detail of particular device or asset on basis of time duration.
+	 * get detail of particular device the basis of time duration and device id.
 	 * 
+	 * @param starttime
+	 *            of type date.
 	 * @param endtime
-	 *            of type date,
-	 * @return list of record.
+	 *            of type date
+	 * @param deviceId
+	 *            of type long.
+	 * @return TrackingDetailModel.
 	 * @throws ParseException
 	 */
 	@GetMapping(value = "/getCall/{starttime}/{endtime}/{deviceId}")
@@ -101,11 +107,16 @@ public class LocationTrackingController {
 	}
 
 	/**
+	 * get detail of particular device or asset and driver on basis of time
+	 * duration.
 	 * 
 	 * @param starttime
+	 *            of type date.
 	 * @param endtime
+	 *            of type date.
 	 * @param deviceId
-	 * @return
+	 *            of type long.
+	 * @return TrackingDetailModel.
 	 * @throws ParseException
 	 */
 
