@@ -1,5 +1,7 @@
 package com.turvo.locationtracking.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,13 +62,14 @@ public class LocationTrackingController {
 	 * @param endtime
 	 *            of type date,
 	 * @return list of record.
+	 * @throws ParseException 
 	 */
 	@GetMapping(value = "/getCall/{starttime}/{endtime}")
 	public ResponseEntity<List<TrackingDetailModel>> getDetailByTime(
-			@PathVariable("starttime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date starttime,
-			@PathVariable("endtime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date endtime) {
-
-		List<TrackingDetailModel> recordbytime = deviceDetailService.getRecordbytime(starttime, endtime);
+			@PathVariable("starttime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String starttime,
+			@PathVariable("endtime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String endtime) throws ParseException {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		List<TrackingDetailModel> recordbytime = deviceDetailService.getRecordbytime(dateFormat.parse(starttime),dateFormat.parse(endtime));
 		if (recordbytime.isEmpty()) {
 			return new ResponseEntity<List<TrackingDetailModel>>(HttpStatus.NO_CONTENT);
 		}
