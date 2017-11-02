@@ -45,7 +45,7 @@ public class LocationTrackingController {
 	 *            of type long;
 	 * @return list of record.
 	 */
-	@GetMapping(value = "/getCall/{deviceid}")
+	@GetMapping(value = "/getTrackRecord/{deviceid}")
 	public ResponseEntity<List<TrackingDetailModel>> getDetailByDevice(@PathVariable("deviceid") Long deviceId) {
 
 		List<TrackingDetailModel> recordbydeviceid = deviceDetailService.getTrackingDetailsByDeviceId(deviceId);
@@ -66,7 +66,7 @@ public class LocationTrackingController {
 	 * @return TrackingDetailModel.
 	 * @throws ParseException
 	 */
-	@GetMapping(value = "/getCall/{starttime}/{endtime}")
+	@GetMapping(value = "/getTrackRecord/{starttime}/{endtime}")
 	public ResponseEntity<List<TrackingDetailModel>> getDetailByTime(
 			@PathVariable("starttime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String starttime,
 			@PathVariable("endtime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String endtime)
@@ -92,7 +92,7 @@ public class LocationTrackingController {
 	 * @return TrackingDetailModel.
 	 * @throws ParseException
 	 */
-	@GetMapping(value = "/getCall/{starttime}/{endtime}/{deviceId}")
+	@GetMapping(value = "/getTrackRecord/{starttime}/{endtime}/{deviceId}")
 	public ResponseEntity<List<TrackingDetailModel>> getDetailByTimeAndDevice(
 			@PathVariable("starttime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String starttime,
 			@PathVariable("endtime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String endtime,
@@ -120,7 +120,7 @@ public class LocationTrackingController {
 	 * @throws ParseException
 	 */
 
-	@GetMapping(value = "/getCall/{starttime}/{endtime}/{deviceId}/{driverId}")
+	@GetMapping(value = "/getTrackRecord/{starttime}/{endtime}/{deviceId}/{driverId}")
 	public ResponseEntity<List<TrackingDetailModel>> getDetailByTimeAndDeviceAndDriver(
 			@PathVariable("starttime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String starttime,
 			@PathVariable("endtime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String endtime,
@@ -140,7 +140,7 @@ public class LocationTrackingController {
 	 * @param trackingDetailModel
 	 *            of type json object.
 	 */
-	@PostMapping(value = "/add")
+	@PostMapping(value = "/addTrackRecord")
 	@ResponseStatus(HttpStatus.ACCEPTED)
 	public void saveAssetTrackingDetails(@RequestBody TrackingDetailModel trackingDetailModel) {
 

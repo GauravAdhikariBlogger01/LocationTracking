@@ -19,7 +19,7 @@
 
 
 post request
--http://localhost:8084/add
+-http://localhost:8084/addTrackRecord
 
 {
  
@@ -33,23 +33,23 @@ post request
 }
 
 get request
--http://localhost:8084/getCall/{pass deviceid}
+-http://localhost:8084/getTrackRecord/{pass deviceid}
 
 get request
--http://localhost:8084/getCall/{starttime}/{enddate}
+-http://localhost:8084/getTrackRecord/{starttime}/{enddate}
 
 
 ##WebService for get call
 
 Get
 
--/getCall/{starttime}/{endtime}
+-/getTrackRecord/{starttime}/{endtime}
 
--/getCall/{deviceid}
+-/getTrackRecord/{deviceid}
 
--/getCall/{starttime}/{endtime}/{deviceId}
+-/getTrackRecord/{starttime}/{endtime}/{deviceId}
 
--/getCall/{starttime}/{endtime}/{deviceId}/{driverId}
+-/getTrackRecord/{starttime}/{endtime}/{deviceId}/{driverId}
 
 
 Post

@@ -29,12 +29,6 @@ PRIMARY KEY (tracking_Id)
 
 
 
-
-INSERT INTO `LocationTracking`.`driver` (`driver_id`, `mobileno`, `latitude`, `longitude`, `speed`, `additionalInfo`, `eventtime`)
-VALUES ('101', '987654320', '12', '13', '60', 'test', '2017-10-31 06:54:58');
-
-
-
 CREATE TABLE current_location (
   driver_id INT NOT NULL,
   mobileno INT NOT NULL,
