@@ -39,7 +39,7 @@ public class LocationTrackingController {
 	}
 
 	/**
-	 * get detail of particular device or asset on basis of device/assetid.
+	 * get detail of particular device or asset on basis of device/asset id.
 	 * 
 	 * @param deviceid
 	 *            of type long;
@@ -60,9 +60,9 @@ public class LocationTrackingController {
 	 * get detail of particular device the basis of time duration
 	 * 
 	 * @param starttime
-	 *            of type date.
+	 *            event search start time..
 	 * @param endtime
-	 *            of type date.
+	 *            event search start time..
 	 * @return TrackingDetailModel.
 	 * @throws ParseException
 	 */
@@ -84,9 +84,9 @@ public class LocationTrackingController {
 	 * get detail of particular device the basis of time duration and device id.
 	 * 
 	 * @param starttime
-	 *            of type date.
+	 *            event search start time..
 	 * @param endtime
-	 *            of type date
+	 *            event search end time.
 	 * @param deviceId
 	 *            of type long.
 	 * @return TrackingDetailModel.
@@ -111,9 +111,9 @@ public class LocationTrackingController {
 	 * duration.
 	 * 
 	 * @param starttime
-	 *            of type date.
+	 *            event search start time..
 	 * @param endtime
-	 *            of type date.
+	 *            event search end time..
 	 * @param deviceId
 	 *            of type long.
 	 * @return TrackingDetailModel.

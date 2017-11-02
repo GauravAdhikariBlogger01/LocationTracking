@@ -34,9 +34,9 @@ public interface DeviceDetailService {
 	 * get all location of devices recorded between start time and end time.
 	 * 
 	 * @param starttime
-	 *            {@value of type date}
+	 *            {@value event search start time.}
 	 * @param endtime
-	 *            {@value of type date}
+	 *            {@value event search end time.}
 	 * @return [{@link TrackingDetailModel}.
 	 */
 
@@ -47,9 +47,9 @@ public interface DeviceDetailService {
 	 * time.
 	 * 
 	 * @param starttime
-	 *            {@value of type date}
+	 *            {@value event search start time.}
 	 * @param endtime
-	 *            {@value of type date}
+	 *            {@value event search end time.}
 	 * @param deviceId
 	 *            {{@link long}
 	 * @return {@link TrackingDetailModel}
@@ -61,9 +61,9 @@ public interface DeviceDetailService {
 	 * and end time.
 	 * 
 	 * @param starttime
-	 *            {@value of type date}
+	 *            {@value event search start time.}
 	 * @param endtime
-	 *            {@value of type date}
+	 *            {@value event search end time.}
 	 * @param deviceId
 	 *            {{@link long}
 	 * @param driverId
