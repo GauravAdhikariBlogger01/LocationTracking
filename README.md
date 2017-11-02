@@ -12,7 +12,7 @@
 -mvn spring-boot : run
 
 
-##Accessing web service
+## WebService API  
 
 
 -http://localhost:8084 , Home page(jsp)
@@ -39,7 +39,18 @@ get request
 -http://localhost:8084/getCall/{starttime}/{enddate}
 
 
-## WebService Access for Scenario Current Location 
+##WebService for get call
+
+Get
+
+-/getCall/{starttime}/{endtime}
+
+-/getCall/{deviceid}
+
+-/getCall/{starttime}/{endtime}/{deviceId}
+
+-/getCall/{starttime}/{endtime}/{deviceId}/{driverId}
+
 
 Post
 
@@ -57,15 +68,5 @@ Data set
   "driverId":"2",
   "additionalInfo":"test"
 }
-
-##WebService for get call
-
--/getCall/{starttime}/{endtime}
-
--/getCall/{deviceid}
-
--/getCall/{starttime}/{endtime}/{deviceId}
-
--/getCall/{starttime}/{endtime}/{deviceId}/{driverId}
 
 
