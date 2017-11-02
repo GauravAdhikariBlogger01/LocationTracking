@@ -20,9 +20,7 @@ import com.turvo.locationtracking.repository.DeviceDetailsRepository;
  */
 @Service("deviceDetailService")
 public class DeviceDetailServiceImpl implements DeviceDetailService {
-	/**
-	 * Atowiring {@link DeviceDetailsRepository}.
-	 */
+	
 	@Autowired
 	DeviceDetailsRepository deviceDetailsRepository;
 
