@@ -61,8 +61,11 @@ Data set
 ##WebService for get call
 
 -/getCall/{starttime}/{endtime}
+
 -/getCall/{deviceid}
+
 -/getCall/{starttime}/{endtime}/{deviceId}
+
 -/getCall/{starttime}/{endtime}/{deviceId}/{driverId}
 
 
