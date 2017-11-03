@@ -12,7 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tracking_device")
+@Table(name = "tracking_Device")
 public class TrackingDevice implements Serializable {
 	/**
 	 * Domain mapping class for tracking device table.

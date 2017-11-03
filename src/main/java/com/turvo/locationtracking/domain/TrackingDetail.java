@@ -19,7 +19,7 @@ import javax.persistence.TemporalType;
  *
  */
 @Entity
-@Table(name = "tracking_detail")
+@Table(name = "tracking_Detail")
 public class TrackingDetail implements Serializable {
 
 	/**
@@ -36,10 +36,10 @@ public class TrackingDetail implements Serializable {
 	private Long deviceId;
 
 	@Column(name = "latitude")
-	private Long latitude;
+	private Float latitude;
 
 	@Column(name = "Longitude")
-	private Long Longitude;
+	private Float Longitude;
 
 	@Column(name = "speed")
 	private Long speed;
@@ -85,19 +85,19 @@ public class TrackingDetail implements Serializable {
 		this.deviceId = deviceId;
 	}
 
-	public Long getLatitude() {
+	public Float getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(Long latitude) {
+	public void setLatitude(Float latitude) {
 		this.latitude = latitude;
 	}
 
-	public Long getLongitude() {
+	public Float getLongitude() {
 		return Longitude;
 	}
 
-	public void setLongitude(Long Longitude) {
+	public void setLongitude(Float Longitude) {
 		this.Longitude = Longitude;
 	}
 

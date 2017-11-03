@@ -13,7 +13,7 @@ import javax.persistence.Embeddable;
  *
  */
 
-public class Driverid implements Serializable {
+public class DriverId implements Serializable {
 
 	/**
 	 * composite key creation.
@@ -41,12 +41,12 @@ public class Driverid implements Serializable {
 		this.mobileno = mobileno;
 	}
 
-	public Driverid(Long driver_id, Long mobileno) {
+	public DriverId(Long driver_id, Long mobileno) {
 		this.driver_id = driver_id;
 		this.mobileno = mobileno;
 	}
 
-	Driverid() {
+	DriverId() {
 
 	}
 
@@ -56,7 +56,7 @@ public class Driverid implements Serializable {
 			return true;
 		if (o == null || getClass() != o.getClass())
 			return false;
-		Driverid taskId1 = (Driverid) o;
+		DriverId taskId1 = (DriverId) o;
 		if (driver_id != taskId1.driver_id)
 			return false;
 		return mobileno == taskId1.mobileno;

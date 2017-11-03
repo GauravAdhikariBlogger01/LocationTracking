@@ -12,9 +12,9 @@ public class TrackingDetailModel {
 
 	private Long deviceId;
 
-	private Long latitude;
+	private Float latitude;
 
-	private Long Longitude;
+	private Float Longitude;
 
 	private Long speed;
 
@@ -48,19 +48,19 @@ public class TrackingDetailModel {
 		this.deviceId = deviceId;
 	}
 
-	public Long getLatitude() {
+	public Float getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(Long latitude) {
+	public void setLatitude(Float latitude) {
 		this.latitude = latitude;
 	}
 
-	public Long getLongitude() {
+	public Float getLongitude() {
 		return Longitude;
 	}
 
-	public void setLongitude(Long Longitude) {
+	public void setLongitude(Float Longitude) {
 		this.Longitude = Longitude;
 	}
 

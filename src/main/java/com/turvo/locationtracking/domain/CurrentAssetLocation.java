@@ -18,13 +18,13 @@ import javax.persistence.TemporalType;
  *
  */
 @Entity
-@Table(name = "current_location")
+@Table(name = "current_Location")
 public class CurrentAssetLocation implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private Driverid driver_id;
+	private DriverId driver_id;
 
 	@Column(name = "latitude")
 	private long latitude;
@@ -93,11 +93,11 @@ public class CurrentAssetLocation implements Serializable {
 		this.additionalInfo = additionalInfo;
 	}
 
-	public Driverid getDriver() {
+	public DriverId getDriver() {
 		return driver_id;
 	}
 
-	public void setDriver(Driverid driverid) {
+	public void setDriver(DriverId driverid) {
 		this.driver_id = driverid;
 	}
 
