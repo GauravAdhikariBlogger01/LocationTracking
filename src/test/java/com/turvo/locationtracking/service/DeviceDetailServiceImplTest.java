@@ -35,8 +35,8 @@ public class DeviceDetailServiceImplTest {
 		trackingDetail = new TrackingDetail();
 		trackingDetail.setAdditionalInfo("abc");
 		trackingDetail.setDeviceId(1L);
-		trackingDetail.setLatitude(34L);
-		trackingDetail.setLongitude(50L);
+		trackingDetail.setLatitude((float) 34L);
+		trackingDetail.setLongitude((float) 50L);
 		trackingDetail.setSpeed(78L);
 		trackingDetail.setTimestamp(new Date());
 

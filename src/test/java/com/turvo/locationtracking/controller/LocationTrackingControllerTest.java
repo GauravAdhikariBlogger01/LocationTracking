@@ -40,8 +40,8 @@ public class LocationTrackingControllerTest {
 		recordByDeviceId = new ArrayList<>();
 		TrackingDetailModel trackingDetail = new TrackingDetailModel();
 		trackingDetail.setAdditionalInfo("Test Details");
-		trackingDetail.setLatitude(1l);
-		trackingDetail.setLongitude(2l);
+		trackingDetail.setLatitude((float) 1l);
+		trackingDetail.setLongitude((float) 2l);
 		trackingDetail.setSpeed(5l);
 		recordByDeviceId.add(trackingDetail);
 		// locationTrackingController = new LocationTrackingController();

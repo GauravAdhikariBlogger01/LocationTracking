@@ -1,8 +1,10 @@
 
-Drop Schema LocationTracking;
-
+DROP DATABASE LocationTracking;
 CREATE DATABASE LocationTracking;
 use LocationTracking;
+
+
+
 DROP TABLE IF EXISTS `tracking_Device`;
 CREATE TABLE `tracking_Device` (
   `device_id` int(11) NOT NULL AUTO_INCREMENT,
