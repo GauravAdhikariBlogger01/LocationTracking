@@ -1,6 +1,4 @@
 
-DROP DATABASE LocationTracking;
-CREATE DATABASE LocationTracking;
 use LocationTracking;
 
 
@@ -14,11 +12,6 @@ CREATE TABLE `tracking_Device` (
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 
-INSERT into `LocationTracking`.`tracking_device` (`device_id`, `device_type`, `description`) 
-VALUES ('1', 'GPS', 'test');
-
-INSERT into `LocationTracking`.`tracking_device` (`device_id`, `device_type`, `description`) 
-VALUES ('2', 'Mobile', 'test');
 
 DROP TABLE IF EXISTS tracking_Detail;
 CREATE TABLE `LocationTracking`.`tracking_Detail` (
@@ -56,10 +49,5 @@ CREATE TABLE `LocationTracking`.`current_Location` (
     REFERENCES `LocationTracking`.`tracking_Device` (`device_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-    
-INSERT INTO `LocationTracking`.`current_location` 
-(`driver_id`, `mobileno`, `additionalinfo`, `device_id`, `latitude`, `longitude`, `speed`, `eventtime`)
-VALUES ('100', '1234567890', 'AtoB', '1', '11.00', '12.00001', '24', '2017-11-03 15:05:39');
-
 
 
