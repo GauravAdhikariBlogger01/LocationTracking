@@ -10,42 +10,32 @@ import java.util.Date;
  */
 public class TrackingDetailModel {
 
-	private Long deviceId;
+	private Long assetId;
 
 	private Float latitude;
 
-	private Float Longitude;
+	private Float longitude;
 
-	private Long speed;
+	private Float speed;
 
 	private String additionalInfo;
 
-	private Date timeststamp;
+	private String deviceType;
 
-	private Long driverId;
-
-	public Long getDriverId() {
-		return driverId;
+	public String getDeviceType() {
+		return deviceType;
 	}
 
-	public void setDriverId(Long driverId) {
-		this.driverId = driverId;
+	public void setDeviceType(String deviceType) {
+		this.deviceType = deviceType;
 	}
 
-	public Date getTimeststamp() {
-		return timeststamp;
+	public Long getAssetId() {
+		return assetId;
 	}
 
-	public void setTimeststamp(Date timeststamp) {
-		this.timeststamp = timeststamp;
-	}
-
-	public Long getDeviceId() {
-		return deviceId;
-	}
-
-	public void setDeviceId(Long deviceId) {
-		this.deviceId = deviceId;
+	public void setAssetId(Long assetId) {
+		this.assetId = assetId;
 	}
 
 	public Float getLatitude() {
@@ -57,18 +47,18 @@ public class TrackingDetailModel {
 	}
 
 	public Float getLongitude() {
-		return Longitude;
+		return longitude;
 	}
 
-	public void setLongitude(Float Longitude) {
-		this.Longitude = Longitude;
+	public void setLongitude(Float longitude) {
+		this.longitude = longitude;
 	}
 
-	public Long getSpeed() {
+	public Float getSpeed() {
 		return speed;
 	}
 
-	public void setSpeed(Long speed) {
+	public void setSpeed(Float speed) {
 		this.speed = speed;
 	}
 

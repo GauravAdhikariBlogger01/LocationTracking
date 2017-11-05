@@ -2,8 +2,8 @@ package com.turvo.locationtracking.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -17,14 +17,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import com.turvo.locationtracking.modal.DriverVehicleRegistrationModel;
+import com.turvo.locationtracking.modal.ResponseTrackingDetailModel;
 import com.turvo.locationtracking.modal.TrackingDetailModel;
-import com.turvo.locationtracking.service.DeviceDetailService;
+import com.turvo.locationtracking.service.DriverVehicleRegistrationService;
+import com.turvo.locationtracking.service.TrackingDetailService;
 
 @Controller
 public class LocationTrackingController {
 
 	@Autowired
-	DeviceDetailService deviceDetailService;
+	private DriverVehicleRegistrationService driverVehicleRegistrationService;
+
+	@Autowired
+	private TrackingDetailService trackingDetailService;
 
 	/**
 	 * To load Home page url,get request.
@@ -32,6 +39,7 @@ public class LocationTrackingController {
 	 * @param model
 	 * @return string jsp page name.
 	 */
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String showWelcomePage(ModelMap model) {
 		model.put("name", "Welcome to Home Page");
@@ -39,112 +47,57 @@ public class LocationTrackingController {
 	}
 
 	/**
-	 * get detail of particular device or asset on basis of device/asset id.
+	 * Register Driver data.
 	 * 
-	 * @param deviceid
-	 *            of type long;
-	 * @return list of record.
+	 * @param driverVehicleRegistrationModel
+	 *            {@value data send by user mobile device}
 	 */
-	@GetMapping(value = "/getTrackRecord/{deviceid}")
-	public ResponseEntity<List<TrackingDetailModel>> getDetailByDevice(@PathVariable("deviceid") Long deviceId) {
-
-		List<TrackingDetailModel> recordbydeviceid = deviceDetailService.getTrackingDetailsByDeviceId(deviceId);
-		if (recordbydeviceid.isEmpty()) {
-			return new ResponseEntity<List<TrackingDetailModel>>(HttpStatus.NO_CONTENT);
-
-		}
-		return new ResponseEntity<List<TrackingDetailModel>>(recordbydeviceid, HttpStatus.OK);
+	@PostMapping(value = "/registration")
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	public void registerDriverInfo(@RequestBody DriverVehicleRegistrationModel driverVehicleRegistrationModel) {
+		driverVehicleRegistrationService.addDriverVehicleRegistrationDetails(driverVehicleRegistrationModel);
 	}
 
 	/**
-	 * get detail of particular device the basis of time duration
+	 * Saving tracking data send by different devices.
 	 * 
-	 * @param starttime
-	 *            event search start time..
-	 * @param endtime
-	 *            event search start time..
-	 * @return TrackingDetailModel.
-	 * @throws ParseException
+	 * @param trackingDetailModel
+	 *            {@value data send by different devices}
 	 */
-	@GetMapping(value = "/getTrackRecord/{starttime}/{endtime}")
-	public ResponseEntity<List<TrackingDetailModel>> getDetailByTime(
-			@PathVariable("starttime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String starttime,
-			@PathVariable("endtime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String endtime)
-			throws ParseException {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		List<TrackingDetailModel> recordbytime = deviceDetailService
-				.getTrackingDetailByTimeSpan(dateFormat.parse(starttime), dateFormat.parse(endtime));
-		if (recordbytime.isEmpty()) {
-			return new ResponseEntity<List<TrackingDetailModel>>(HttpStatus.NO_CONTENT);
-		}
-		return new ResponseEntity<List<TrackingDetailModel>>(recordbytime, HttpStatus.OK);
+	@PostMapping(value = "/addTrackRecord")
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	public void saveLocationTrackingRecord(@RequestBody TrackingDetailModel trackingDetailModel) {
+		trackingDetailService.addtrackingdetails(trackingDetailModel);
 	}
 
 	/**
-	 * get detail of particular device the basis of time duration and device id.
+	 * Get tracking data of all vehicle on the basis of time slot,deviceId and
+	 * driver Id.
 	 * 
 	 * @param starttime
-	 *            event search start time..
+	 *            {@value start time send by user of type time stamp}
 	 * @param endtime
-	 *            event search end time.
-	 * @param deviceId
-	 *            of type long.
-	 * @return TrackingDetailModel.
+	 *            {@value end time send by user of type time stamp}
+	 * @param deviceId{@value
+	 * 			Device Id send by user of type Long}
+	 * @param driverId
+	 *            {@value Driver Id send by user of type Long}
+	 * @return {@value Result dor specific device and driver,No of ping details}
 	 * @throws ParseException
+	 * @{@link Exception exception handling}
 	 */
-	@GetMapping(value = "/getTrackRecord/{starttime}/{endtime}/{deviceId}")
-	public ResponseEntity<List<TrackingDetailModel>> getDetailByTimeAndDevice(
-			@PathVariable("starttime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String starttime,
-			@PathVariable("endtime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String endtime,
-			@PathVariable("deviceId") Long deviceId) throws ParseException {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		List<TrackingDetailModel> recordbytime = deviceDetailService.getTrackingDetailByTimeSpanAndDeviceId(
-				dateFormat.parse(starttime), dateFormat.parse(endtime), deviceId);
-		if (recordbytime.isEmpty()) {
-			return new ResponseEntity<List<TrackingDetailModel>>(HttpStatus.NO_CONTENT);
-		}
-		return new ResponseEntity<List<TrackingDetailModel>>(recordbytime, HttpStatus.OK);
-	}
-
-	/**
-	 * get detail of particular device or asset and driver on basis of time
-	 * duration.
-	 * 
-	 * @param starttime
-	 *            event search start time..
-	 * @param endtime
-	 *            event search end time..
-	 * @param deviceId
-	 *            of type long.
-	 * @return TrackingDetailModel.
-	 * @throws ParseException
-	 */
-
 	@GetMapping(value = "/getTrackRecord/{starttime}/{endtime}/{deviceId}/{driverId}")
-	public ResponseEntity<List<TrackingDetailModel>> getDetailByTimeAndDeviceAndDriver(
+	public ResponseEntity<List<ResponseTrackingDetailModel>> getDetailByTimeAndDeviceAndDriver(
 			@PathVariable("starttime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String starttime,
 			@PathVariable("endtime") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) String endtime,
 			@PathVariable("deviceId") Long deviceId, @PathVariable("driverId") Long driverId) throws ParseException {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		List<TrackingDetailModel> recordbytime = deviceDetailService.getTrackingDetailByTimeSpanAndDeviceIdAndDriverId(
-				dateFormat.parse(starttime), dateFormat.parse(endtime), deviceId, driverId);
+		List<ResponseTrackingDetailModel> recordbytime = trackingDetailService
+				.getTrackingDetailByTimeSpanAndDeviceIdAndDriverId(dateFormat.parse(starttime),
+						dateFormat.parse(endtime), deviceId, driverId);
 		if (recordbytime.isEmpty()) {
-			return new ResponseEntity<List<TrackingDetailModel>>(HttpStatus.NO_CONTENT);
+			return new ResponseEntity<List<ResponseTrackingDetailModel>>(HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<List<TrackingDetailModel>>(recordbytime, HttpStatus.OK);
-	}
-
-	/**
-	 * Save the details publish by asset.
-	 * 
-	 * @param trackingDetailModel
-	 *            of type json object.
-	 */
-	@PostMapping(value = "/addTrackRecord")
-	@ResponseStatus(HttpStatus.ACCEPTED)
-	public void saveAssetTrackingDetails(@RequestBody TrackingDetailModel trackingDetailModel) {
-
-		deviceDetailService.addTrackingDetails(trackingDetailModel);
-
+		return new ResponseEntity<List<ResponseTrackingDetailModel>>(recordbytime, HttpStatus.OK);
 	}
 }

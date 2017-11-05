@@ -14,59 +14,55 @@
 
 ## WebService API  
 
-
+#UI welcome page
 -http://localhost:8084 , Home page(jsp)
 
+##Get tracking details of any device on basis of driverId,deviceId between a time slot.
 
-post request
--http://localhost:8084/addTrackRecord
+#Get
 
-{
- 
- "deviceId":"2",
-  "latitude":"10",
-  "longitude":"8",
-  "speed":"20",
-  "mobileNumber":"123489",
-  "driverId":"2",
-  "additionalInfo":"test"
-}
+-http://localhost:8084/getTrackRecord/{starttime}/{endtime}/{deviceId}/{driverId}
 
-get request
--http://localhost:8084/getTrackRecord/{pass deviceid}
+#For example:
 
-get request
--http://localhost:8084/getTrackRecord/{starttime}/{enddate}
-
-
-##WebService for get call
-
-Get
-
--/getTrackRecord/{starttime}/{endtime}
-
--/getTrackRecord/{deviceid}
-
--/getTrackRecord/{starttime}/{endtime}/{deviceId}
-
--/getTrackRecord/{starttime}/{endtime}/{deviceId}/{driverId}
-
-
+-http://localhost:8084/getTrackRecord/2012-02-01 00:00:00/2018-10-31 06:54:58/1001/2
 Post
 
--http://localhost:8084/addDriverDevice/
 
-Data set
+#Driver vehicle registration-POST Call
+http://localhost:8084/registration
+
+#For Example
+
+Body:
 
 {
  
- "deviceId":"2",
-  "latitude":"09",
-  "longitude":"80",
-  "speed":"20",
-  "mobileNumber":"123489",
-  "driverId":"2",
-  "additionalInfo":"test"
+ "driverName":"perwez",
+  "mobileNumber":"1110011122",
+  "vehicleId":"2002",
+  "status":"true"
+  
 }
+
+
+#Tracking Details send by any device-POST Call
+
+http://localhost:8084/addTrackRecord
+
+#For Example
+
+Body:
+{
+ 
+ "assetId":"1001",
+  "latitude":"2345",
+  "longitude":"101",
+  "speed":"112",
+  "additionalInfo":"Test",
+  "deviceType":"gps"
+  
+}
+
 
 

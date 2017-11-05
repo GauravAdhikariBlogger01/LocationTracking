@@ -12,20 +12,14 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/**
- * Entity class for tracking detail table.
- * 
- * @author gaurava
- *
- */
 @Entity
-@Table(name = "tracking_Detail")
-public class TrackingDetail implements Serializable {
+@Table(name = "tracking_detail_summary")
+public class TrackingDetails implements Serializable {
 
 	/**
-	 * Domain mapping class for tracking detail table.
+	 * Domain mapping class for tracking detail summary.
 	 */
-	private static final Long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,23 +29,33 @@ public class TrackingDetail implements Serializable {
 	@Column(name = "device_id")
 	private Long deviceId;
 
+	@Column(name = "vechile_id")
+	private Long vehicleId;
+
+	@Column(name = "device_type")
+	private String deviceType;
+
+	@Column(name = "driver_name")
+	private String driverName;
+
 	@Column(name = "latitude")
 	private Float latitude;
 
-	@Column(name = "Longitude")
-	private Float Longitude;
+	@Column(name = "longitude")
+	private Float longitude;
 
 	@Column(name = "speed")
-	private Long speed;
+	private Float speed;
+
+	@Column(name = "additionalInfo")
+	private String additionalInfo;
+
+	@Column(name = "eventtime")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date eventtime;
 
 	@Column(name = "driver_id")
 	private Long driverId;
-	@Column(name = "additionalinfo")
-	private String additionalInfo;
-
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "eventtime")
-	private Date timestamp;
 
 	public Long getDriverId() {
 		return driverId;
@@ -59,14 +63,6 @@ public class TrackingDetail implements Serializable {
 
 	public void setDriverId(Long driverId) {
 		this.driverId = driverId;
-	}
-
-	public Date getTimestamp() {
-		return timestamp;
-	}
-
-	public void setTimestamp(Date timestamp) {
-		this.timestamp = timestamp;
 	}
 
 	public Long getTrackingId() {
@@ -85,6 +81,30 @@ public class TrackingDetail implements Serializable {
 		this.deviceId = deviceId;
 	}
 
+	public Long getVehicleId() {
+		return vehicleId;
+	}
+
+	public void setVehicleId(Long vehicleId) {
+		this.vehicleId = vehicleId;
+	}
+
+	public String getDeviceType() {
+		return deviceType;
+	}
+
+	public void setDeviceType(String deviceType) {
+		this.deviceType = deviceType;
+	}
+
+	public String getDriverName() {
+		return driverName;
+	}
+
+	public void setDriverName(String driverName) {
+		this.driverName = driverName;
+	}
+
 	public Float getLatitude() {
 		return latitude;
 	}
@@ -94,18 +114,18 @@ public class TrackingDetail implements Serializable {
 	}
 
 	public Float getLongitude() {
-		return Longitude;
+		return longitude;
 	}
 
-	public void setLongitude(Float Longitude) {
-		this.Longitude = Longitude;
+	public void setLongitude(Float longitude) {
+		this.longitude = longitude;
 	}
 
-	public Long getSpeed() {
+	public Float getSpeed() {
 		return speed;
 	}
 
-	public void setSpeed(Long speed) {
+	public void setSpeed(Float speed) {
 		this.speed = speed;
 	}
 
@@ -115,6 +135,14 @@ public class TrackingDetail implements Serializable {
 
 	public void setAdditionalInfo(String additionalInfo) {
 		this.additionalInfo = additionalInfo;
+	}
+
+	public Date getEventtime() {
+		return eventtime;
+	}
+
+	public void setEventtime(Date eventtime) {
+		this.eventtime = eventtime;
 	}
 
 }

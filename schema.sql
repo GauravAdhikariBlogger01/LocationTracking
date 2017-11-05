@@ -1,53 +1,41 @@
 
-use LocationTracking;
-
-
-
-DROP TABLE IF EXISTS `tracking_Device`;
-CREATE TABLE `tracking_Device` (
-  `device_id` int(11) NOT NULL AUTO_INCREMENT,
-  `device_type` varchar(10) DEFAULT NULL,
-  `description` varchar(50) DEFAULT NULL,
+DROP TABLE IF EXISTS device_registration;
+CREATE TABLE `device_registration` (
+  `device_id` bigint(10) NOT NULL AUTO_INCREMENT,
+  `description` VARCHAR(255) DEFAULT NULL,
+  `vehicle_id` bigint(10) UNIQUE NOT NULL,
   PRIMARY KEY (`device_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 
 
-DROP TABLE IF EXISTS tracking_Detail;
-CREATE TABLE `LocationTracking`.`tracking_Detail` (
-  `tracking_id` INT NOT NULL,
-  `device_id` INT NOT NULL,
+DROP TABLE IF EXISTS tracking_detail_summary;
+CREATE TABLE `tracking_Detail_summary` (
+  `tracking_id` bigint(10) NOT NULL AUTO_INCREMENT,
+  `device_id` bigint(10) NOT NULL,
+   `vehicle _id` bigint(10) NOT NULL,
+  `device_type` VARCHAR(20) NOT NULL,
+  `driver_name` VARCHAR(10) NOT NULL,
   `latitude` DECIMAL(10,6) NOT NULL,
   `longitude` DECIMAL(10,6) NOT NULL,
-  `speed` INT(3) NOT NULL,
-  `driver_id` INT NOT NULL,
+  `speed` DECIMAL(3,2) NOT NULL,
   `additionalInfo` VARCHAR(45) NULL,
   `eventtime` TIMESTAMP NOT NULL,
-  PRIMARY KEY (`tracking_id`),
-  INDEX `fk_tracking_deviceId_idx` (`device_id` ASC),
-  CONSTRAINT `fk_tracking_deviceId`
-    FOREIGN KEY (`device_id`)
-    REFERENCES `LocationTracking`.`tracking_Device` (`device_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+  `driver_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`tracking_id`))
+  ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-DROP TABLE IF EXISTS current_Location;
+CREATE TABLE `driver_vehicle_registration` (
+  `driver_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `driver_name` varchar(255) DEFAULT NULL,
+  `mobile_no` bigint(20) UNIQUE DEFAULT NULL,
+  `registration_time` datetime DEFAULT NULL,
+  `status` bit(1) DEFAULT NULL,
+  `vehicle_id` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`driver_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=502 DEFAULT CHARSET=latin1;
 
-CREATE TABLE `LocationTracking`.`current_Location` (
-  `driver_id` INT NOT NULL,
-  `mobileno` INT NOT NULL,
-  `latitude` DECIMAL(10,6) NOT NULL,
-  `longitude` DECIMAL(10,6) NOT NULL,
-  `speed` INT(3) NOT NULL,
-  `device_id` INT(11) NOT NULL,
-  `additionalInfo` VARCHAR(45) NULL,
-  `eventtime` TIMESTAMP NOT NULL,
-  PRIMARY KEY (`driver_id`, `mobileno`),
-  INDEX `fk_driver_1_idx` (`device_id` ASC),
-  CONSTRAINT `fk_driver_1`
-    FOREIGN KEY (`device_id`)
-    REFERENCES `LocationTracking`.`tracking_Device` (`device_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+
+
 
 
