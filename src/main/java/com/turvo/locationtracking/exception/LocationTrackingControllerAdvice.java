@@ -17,9 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class LocationTrackingControllerAdvice {
 
 	@ExceptionHandler(Exception.class)
-
 	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-
 	@ResponseBody
 	public String exception(Exception e) {
 
