@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.turvo.locationtracking.domain.DeviceRegistration;
 import com.turvo.locationtracking.domain.DriverVehicleRegistration;
 import com.turvo.locationtracking.domain.TrackingDetails;
+import com.turvo.locationtracking.exception.DetailNotFoundException;
 import com.turvo.locationtracking.modal.DriverVehicleRegistrationModel;
 import com.turvo.locationtracking.modal.ResponseTrackingDetailModel;
 import com.turvo.locationtracking.modal.TrackingDetailModel;
@@ -78,6 +79,8 @@ public class TrackingDetailServiceImpl implements TrackingDetailService {
 			trackingDetail.setDeviceId(trackingDetailModel.getAssetId());
 			trackingDetail.setDriverId(driverVehicleRegistrationDetail.getDriverId());
 			trackingDetailRepository.save(trackingDetail);
+		} else {
+			throw new DetailNotFoundException(trackingDetailModel.getAssetId(), "Asset(GPS) Details not found");
 		}
 
 	}
@@ -107,6 +110,8 @@ public class TrackingDetailServiceImpl implements TrackingDetailService {
 			trackingDetail.setDeviceId(trackingDetailModel.getAssetId());
 			trackingDetail.setDriverId(driverVehicleRegistrationDetail.getDriverId());
 			trackingDetailRepository.save(trackingDetail);
+		} else {
+			throw new DetailNotFoundException(trackingDetailModel.getAssetId(), "Driver Details not found");
 		}
 
 	}
@@ -124,6 +129,8 @@ public class TrackingDetailServiceImpl implements TrackingDetailService {
 				endtime, deviceId, driverId);
 		if (!trackingDetails.isEmpty()) {
 			responseTrackingDetailModel = createTrackingDetailModel(trackingDetails);
+		} else {
+			throw new DetailNotFoundException(deviceId, "Please check the search criteriea");
 		}
 
 		return responseTrackingDetailModel;

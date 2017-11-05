@@ -9,7 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
+/**
+ * Driver vehicle registration table mapping class.
+ * @author gaurava
+ *
+ */
 @Entity
 @Table(name = "driver_vehicle_registration")
 public class DriverVehicleRegistration implements Serializable {
