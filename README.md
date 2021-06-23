@@ -29,7 +29,7 @@ post request
   "speed":"20",
   "mobileNumber":"123489",
   "driverId":"2",
-  "additionalInfo":"test info"
+  "additionalInfo":"test"
 }
 
 get request
